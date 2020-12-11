@@ -58,4 +58,5 @@ add_executable(ft_printf
         main.c
         print_string.c
         print_char.c
-        print_ptr.c)
+        print_ptr.c
+        print_nbr.c)

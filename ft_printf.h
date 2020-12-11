@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/09 11:20:31 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/11 17:02:31 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 typedef struct
 {
-	void			*content;
 	unsigned int	flag;
 	int				wide;
 	int				precision;
@@ -43,9 +42,11 @@ int			print_string(va_list args, s_output *frmt);
 size_t		output_len(s_output *frmt, char *str);
 size_t		s_len(s_output *frmt, char *str);
 size_t		output_nlen(s_output *frmt, int nbr);
-size_t		n_len(s_output *frmt, int nbr);
+size_t		n_len(int nbr);
 void		put_left(size_t len, size_t str_len, char *str, char empty);
 void		put_right(size_t len, size_t str_len, char *str, char empty);
+int 		putnbr_left(s_output *frmt, int nbr, char empty);
+void		putnbr_right(size_t len, size_t str_len, int nbr, char empty);
 void		putchar_left(size_t len, char c, char empty);
 void		putchar_right(size_t len, char c, char empty);
 size_t		putchar_len(s_output *frmt);
