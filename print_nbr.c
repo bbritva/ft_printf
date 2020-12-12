@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/11 21:49:47 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/12 11:34:03 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		print_nbr(va_list args, s_output *frmt)
 	empty = ((frmt->flag & ZERO) && frmt->precision != -1) ? '0' : ' ';
 	if (frmt->flag & MINUS)
 		len = putnbr_left(frmt, nbr, ' ');
-	else
-		len = putnbr_right(frmt, nbr, empty);
+//	else
+//		len = putnbr_right(frmt, nbr, empty);
 	return (len);
 }
 
@@ -40,13 +40,13 @@ int 	putnbr_left(s_output *frmt, int nbr, char empty)
 	{
 		ft_putchar_fd('-', 1);
 		i++;
+		while ((i - 1) < (frmt->precision - n_len(nbr)))
+		{
+			ft_putchar_fd('0', 1);
+			i++;
+		}
 	}
-	while (i < (frmt->precision - n_len(nbr)))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-	}
-	(nbr > 0) ? ft_putnbr_fd(nbr, 1) : ft_putnbr_fd(-nbr, 1);
+	(nbr > 0) ? ft_putnbr(nbr) : ft_putnbr(-nbr);
 	i += (nbr > 0) ? n_len(nbr) : n_len(nbr) + 1;
 	while (i < len)
 	{
@@ -110,9 +110,8 @@ int		ft_putnbr(int i)
 		ft_putchar_fd('0', 1);
 		return (1);
 	} else if (i > 9)
-	{
 		return (ft_putnbr(i / 10) + ft_putnbr(i % 10));
-	} else
+	else
 	{
 		ft_putchar_fd(i + '0', 1);
 		return (1);

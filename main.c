@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:35:20 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/11 17:24:11 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/12 11:53:33 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		main(void)
 
 	str1 = "a123456789a";
 	str2 = "b123456789b";
-	ptf_result = printf("lib:%-10.4d", -16);
+	ptf_result = printf("lib:%0*.*d",10, -3, 6);
     printf("\n");
-	ft_ptf_result = ft_printf("my :%-10.4d", -16);
+	ft_ptf_result = ft_printf(" my:%0*.*d",10, -3, 6);
     printf("\n");
 	printf(" my result = %d\n", ft_ptf_result);
 	printf("lib result = %d\n", ptf_result);
