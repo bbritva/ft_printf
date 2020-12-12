@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/11 17:02:31 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/11 21:45:28 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct
 	char			type;
 	int				dbl_type;
 	int				parsed_size;
-
 }					s_output;
 
 int			ft_printf(const char *str, ...);
@@ -46,7 +45,7 @@ size_t		n_len(int nbr);
 void		put_left(size_t len, size_t str_len, char *str, char empty);
 void		put_right(size_t len, size_t str_len, char *str, char empty);
 int 		putnbr_left(s_output *frmt, int nbr, char empty);
-void		putnbr_right(size_t len, size_t str_len, int nbr, char empty);
+void		putnbr_right(s_output *frmt, int nbr, char empty);
 void		putchar_left(size_t len, char c, char empty);
 void		putchar_right(size_t len, char c, char empty);
 size_t		putchar_len(s_output *frmt);
@@ -54,6 +53,8 @@ int			print_char(char c, s_output *frmt);
 int			print_ptr(va_list args, s_output *frmt);
 char		*ft_ptrtostr(long long int nbr, char *base);
 int			print_nbr(va_list args, s_output *frmt);
+int			ft_putnbr(int i);
+
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/11 17:08:17 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/11 21:49:47 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 int		print_nbr(va_list args, s_output *frmt)
 {
 	int		nbr;
-//	char	empty;
+	char	empty;
 	int 	len;
 
+	(void) frmt;
 	nbr = va_arg(args, int);
 	len = 0;
-//	empty = ((frmt->flag & ZERO) && frmt->precision != -1) ? '0' : ' ';
+	empty = ((frmt->flag & ZERO) && frmt->precision != -1) ? '0' : ' ';
 	if (frmt->flag & MINUS)
 		len = putnbr_left(frmt, nbr, ' ');
-//	else
-//		len = putnbr_left(frmt, nbr, ' ');
+	else
+		len = putnbr_right(frmt, nbr, empty);
 	return (len);
 }
 
@@ -38,14 +39,20 @@ int 	putnbr_left(s_output *frmt, int nbr, char empty)
 	if (nbr < 0)
 	{
 		ft_putchar_fd('-', 1);
-		len--;
+		i++;
 	}
-	while (i++ < (frmt->precision - n_len(nbr)))
+	while (i < (frmt->precision - n_len(nbr)))
+	{
 		ft_putchar_fd('0', 1);
+		i++;
+	}
 	(nbr > 0) ? ft_putnbr_fd(nbr, 1) : ft_putnbr_fd(-nbr, 1);
-	i += n_len(nbr);
-	while (i++ < len)
+	i += (nbr > 0) ? n_len(nbr) : n_len(nbr) + 1;
+	while (i < len)
+	{
 		ft_putchar_fd(empty, 1);
+		i++;
+	}
 	return (len);
 }
 
@@ -69,7 +76,10 @@ size_t	n_len(int nbr)
 
 	nbr_len = 0;
 	if (nbr < 0)
+	{
 		nbr = -nbr;
+//		nbr_len++;
+	}
 	while (nbr > 0 && ++nbr_len)
 		nbr = nbr / 10;
 	return (nbr_len);
@@ -82,4 +92,29 @@ size_t	output_nlen(s_output *frmt, int nbr)
 	len = n_len(nbr);
 	len = (frmt->wide > (int)len) ? frmt->wide : len;
 	return (len);
+}
+
+
+int		ft_putnbr(int i)
+{
+	if (i == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", 1);
+		return (11);
+	} else if (i < 0)
+	{
+		ft_putchar_fd('-', 1);
+		return (ft_putnbr(-i) + 1);
+	} else if (i == 0)
+	{
+		ft_putchar_fd('0', 1);
+		return (1);
+	} else if (i > 9)
+	{
+		return (ft_putnbr(i / 10) + ft_putnbr(i % 10));
+	} else
+	{
+		ft_putchar_fd(i + '0', 1);
+		return (1);
+	}
 }
