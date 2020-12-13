@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 14:23:16 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/07 12:02:15 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/13 14:38:37 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	frmt_print(va_list args, s_output *frmt)
 		return (print_char('%', frmt));
 	if (frmt->type == 'd' || frmt->type == 'i')
 		return (print_nbr(args, frmt));
+	if (frmt->type == 'x' || frmt->type == 'X')
+		return (print_hex(args, frmt));
 	if (frmt->type == 'u')
 		return (print_nbr(args, frmt));
 	return (0);

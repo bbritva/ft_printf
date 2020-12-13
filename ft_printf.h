@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/13 14:12:35 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/13 15:27:48 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ size_t		putchar_len(s_output *frmt);
 int			print_char(char c, s_output *frmt);
 int			print_ptr(va_list args, s_output *frmt);
 char		*ft_ptrtostr(long long int nbr, char *base);
+char		*ft_hextostr(long long int nbr, char *base);
 int			print_nbr(va_list args, s_output *frmt);
 int			ft_putnbr(long long i);
 int			put_zero(int i);
-
-
+int			print_hex(va_list args, s_output *frmt);
 
 #endif
