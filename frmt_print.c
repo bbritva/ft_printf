@@ -30,5 +30,7 @@ int	frmt_print(va_list args, s_output *frmt)
 		return (print_char('%', frmt));
 	if (frmt->type == 'd' || frmt->type == 'i')
 		return (print_nbr(args, frmt));
+	if (frmt->type == 'u')
+		return (print_nbr(args, frmt));
 	return (0);
 }
