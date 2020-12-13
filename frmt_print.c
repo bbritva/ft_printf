@@ -15,11 +15,11 @@
 
 int	frmt_print(va_list args, s_output *frmt)
 {
-	 printf("flag = %d\n", frmt->flag);
-	 printf("wide = %d\n", frmt->wide);
-	 printf("precision = %d\n", frmt->precision);
-	 printf("type = %c\n", frmt->type);
-	 printf("dbl_type = %d\n", frmt->dbl_type);
+//	 printf("flag = %d\n", frmt->flag);
+//	 printf("wide = %d\n", frmt->wide);
+//	 printf("precision = %d\n", frmt->precision);
+//	 printf("type = %c\n", frmt->type);
+//	 printf("dbl_type = %d\n", frmt->dbl_type);
 	if (frmt->type == 's')
 		return (print_string(args, frmt));
 	if (frmt->type == 'c')

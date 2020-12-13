@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/07 15:16:35 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/13 11:44:21 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		print_ptr(va_list args, s_output *frmt)
 
 	ptr = va_arg(args, uintptr_t);
 	str = (ptr) ? ft_ptrtostr(ptr, "0123456789abcdef") : "0x0";
+	frmt->precision = -1;
 	str_len = s_len(frmt, str);
 	len = output_len(frmt, str);
 	empty = (frmt->flag & ZERO) ? '0' : ' ';
@@ -34,20 +35,32 @@ int		print_ptr(va_list args, s_output *frmt)
 	return (len);
 }
 
+int 	ptr_size(long long int nbr)
+{
+	int ptr_len;
+
+	ptr_len = 0;
+	while (nbr > 0)
+	{
+		ptr_len++;
+		nbr = nbr / 16;
+	}
+	return (ptr_len);
+}
+
 char	*ft_ptrtostr(long long int nbr, char *base)
 {
 	char	*str;
 	int		i;
+	int		size;
 
-	str = (char *)malloc(12);
+	size = ptr_size(nbr) + 3;
+	str = (char *)malloc(sizeof(char) * size);
 	if (str)
 	{
-		i = 0;
-		while (i < 11)
-			str[i++] = '0';
+		i = size - 2;
+		str[0] = '0';
 		str[1] = 'x';
-		str[2] = '1';
-		i = 10;
 		while (nbr / 16 != 0)
 		{
 			str[i] = base[nbr % 16];
@@ -55,7 +68,7 @@ char	*ft_ptrtostr(long long int nbr, char *base)
 			i--;
 		}
 		str[i] = base[nbr];
-		str[11] = 0;
+		str[size - 1] = 0;
 	}
 	return (str);
 }

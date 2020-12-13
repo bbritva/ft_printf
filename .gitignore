@@ -3,3 +3,5 @@
 *.o
 *.a
 /a.out
+pft_2019/
+/libft/
