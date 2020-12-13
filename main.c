@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:35:20 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/13 16:20:29 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/13 18:13:33 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int		main(void)
 	char *str2;
 	int ptf_result;
 	int ft_ptf_result;
-//{%05.*d}", -15, 42
+
 	str1 = "a123456789a";
 	str2 = "b123456789b";
-	ptf_result = printf("lib:\"%x\"", 4294967295u);
+	ptf_result = printf("lib:\"%X\"", 30);
     printf("\n");
-	ft_ptf_result = ft_printf(" my:\"%x\"", 4294967295u);
+	ft_ptf_result = ft_printf(" my:\"%X\"", 30);
     printf("\n");
 	printf(" my result = %d\n", ft_ptf_result);
 	printf("lib result = %d\n", ptf_result);
