@@ -57,6 +57,7 @@ int			print_char(char c, s_output *frmt);
 int			print_ptr(va_list args, s_output *frmt);
 char		*ft_ptrtostr(long long int nbr, char *base);
 int			print_nbr(va_list args, s_output *frmt);
+int			print_unbr(va_list args, s_output *frmt);
 int			ft_putnbr(long long i);
 int			ft_puthex(long long i, char *);
 int			put_zero(int i);

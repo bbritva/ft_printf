@@ -33,6 +33,6 @@ int	frmt_print(va_list args, s_output *frmt)
 	if (frmt->type == 'x' || frmt->type == 'X')
 		return (print_hex(args, frmt));
 	if (frmt->type == 'u')
-		return (print_nbr(args, frmt));
+		return (print_unbr(args, frmt));
 	return (0);
 }
