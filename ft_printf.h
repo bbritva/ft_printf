@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/13 15:27:48 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/13 16:56:37 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,23 @@ size_t		output_len(s_output *frmt, char *str);
 size_t		s_len(s_output *frmt, char *str);
 size_t		output_nlen(s_output *frmt, long long nbr);
 size_t		n_len(long long nbr);
+size_t		output_hlen(s_output *frmt, long long nbr);
+size_t		hex_len(long long nbr);
 void		put_left(size_t len, size_t str_len, char *str, char empty);
 void		put_right(size_t len, size_t str_len, char *str, char empty);
 int 		putnbr_left(s_output *frmt, long long nbr, char empty);
 int 		putnbr_right(s_output *frmt, long long nbr, char empty);
+int 		puthex_left(s_output *frmt, long long nbr, char empty);
+int 		puthex_right(s_output *frmt, long long nbr, char empty);
 void		putchar_left(size_t len, char c, char empty);
 void		putchar_right(size_t len, char c, char empty);
 size_t		putchar_len(s_output *frmt);
 int			print_char(char c, s_output *frmt);
 int			print_ptr(va_list args, s_output *frmt);
 char		*ft_ptrtostr(long long int nbr, char *base);
-char		*ft_hextostr(long long int nbr, char *base);
 int			print_nbr(va_list args, s_output *frmt);
 int			ft_putnbr(long long i);
+int			ft_puthex(long long i);
 int			put_zero(int i);
 int			print_hex(va_list args, s_output *frmt);
 
