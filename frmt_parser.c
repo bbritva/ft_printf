@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:05:49 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/09 11:20:35 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/14 12:06:54 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,13 @@ int			precsn_parse(const char *str, int len, s_output *frmt, va_list args)
 
 int			type_parse(const char *str, int len, s_output *frmt)
 {
+	char	*type;
+
 	frmt->dbl_type = 0;
-	frmt->type = ft_strchr("cspdiuxX%nfgelh", (int)str[len++])[0];
-	if (frmt->type == 'l' && str[len] == 'l')
-	{
-		frmt->dbl_type = 1;
-		len++;
-	}
-	if (frmt->type == 'h' && str[len] == 'h')
-	{
-		frmt->dbl_type = 1;
-		len++;
-	}
+
+	type = ft_strchr("cspdiuxX%nfgelh", (int)str[len++]);
+	if (type)
+		frmt->type = *type;
 	return (len);
 }
 
