@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/13 11:44:21 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/14 10:40:32 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int		print_ptr(va_list args, s_output *frmt)
 	char		empty;
 
 	ptr = va_arg(args, uintptr_t);
-	str = (ptr) ? ft_ptrtostr(ptr, "0123456789abcdef") : "0x0";
+	if (ptr)
+		str = ft_ptrtostr(ptr, "0123456789abcdef");
+	else
+		str = (frmt->precision == 0) ? "0x" : "0x0";
 	frmt->precision = -1;
 	str_len = s_len(frmt, str);
 	len = output_len(frmt, str);
