@@ -20,7 +20,7 @@ int		print_nbr(va_list args, s_output *frmt)
 
 	nbr = (long long)va_arg(args, int);
 	(frmt->precision > -1) ? frmt->flag = frmt->flag & 15 : frmt->flag;
-	empty = ((frmt->flag & ZERO) && frmt->precision == -1) ? '0' : ' ';
+	empty = ((frmt->flag & ZERO) && frmt->precision < 0) ? '0' : ' ';
 	if (frmt->precision == 0 && nbr == 0)
 		len = put_zero(frmt->wide);
 	else
