@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:05:01 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:05:12 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ size_t				output_len(t_frmt *frmt, char *str);
 size_t				s_len(t_frmt *frmt, char *str);
 size_t				output_nlen(t_frmt *frmt, long long nbr);
 size_t				n_len(long long nbr);
-size_t				output_hlen(t_frmt *frmt, long long nbr);
-size_t				hex_len(long long nbr);
+int 				output_hlen(t_frmt *frmt, long long nbr);
+int 				hex_len(long long nbr);
 void				put_left(size_t len, size_t str_len, char *str,
 					char empty);
 void				put_right(size_t len, size_t str_len, char *str,

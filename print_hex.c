@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:11:46 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:04:34 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,14 @@ int		puthex_left(t_frmt *frmt, long long nbr, char empty, char *base)
 	i = 0;
 	if (nbr < 0)
 	{
-		ft_putchar_fd('-', 1);
-		i++;
+		i += write(1, "-", 1);
 		prec++;
 	}
 	while (i < (prec - num_len))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-	}
+		i += write(1, "0", 1);
 	i += (nbr < 0) ? ft_puthex(-nbr, base) : ft_puthex(nbr, base);
 	while (i < wide)
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	return (wide);
 }
 
@@ -81,69 +74,13 @@ int		puthex_right(t_frmt *frmt, long long nbr, char empty, char *base)
 	(nbr < 0) ? prec++ : prec;
 	i = 0;
 	while ((i < (wide - prec)) && empty == ' ')
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	if (nbr < 0)
-	{
-		ft_putchar_fd('-', 1);
-		i++;
-	}
+		i += write(1, "-", 1);
 	while ((i < (wide - prec)) && empty == '0')
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	while (i < (wide - num_len))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-	}
+		i += write(1, "0", 1);
 	(nbr < 0) ? ft_puthex(-nbr, base) : ft_puthex(nbr, base);
 	return (wide);
-}
-
-size_t	hex_len(long long nbr)
-{
-	size_t nbr_len;
-
-	nbr_len = 0;
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-		nbr = -nbr;
-	while (nbr > 0 && ++nbr_len)
-		nbr = nbr / 16;
-	return (nbr_len);
-}
-
-size_t	output_hlen(t_frmt *frmt, long long nbr)
-{
-	size_t	len;
-
-	len = hex_len(nbr);
-	len = (frmt->wide > (int)len) ? frmt->wide : len;
-	if (frmt->precision > (int)len)
-	{
-		len = frmt->precision;
-		(nbr < 0) ? len++ : len;
-	}
-	return (len);
-}
-
-int		ft_puthex(long long i, char *base)
-{
-	if (i == 0)
-	{
-		ft_putchar_fd(base[0], 1);
-		return (1);
-	}
-	else if (i > 15)
-		return (ft_puthex(i / 16, base) + ft_puthex(i % 16, base));
-	else
-	{
-		ft_putchar_fd(base[i], 1);
-		return (1);
-	}
 }
