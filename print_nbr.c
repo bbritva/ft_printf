@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:20:37 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		print_nbr(va_list args, t_frmt *frmt)
 {
-	int				nbr;
-	char			empty;
-	int 			len;
+	int		nbr;
+	char	empty;
+	int		len;
 
 	nbr = va_arg(args, int);
 	(frmt->precision > -1) ? frmt->flag = frmt->flag & 15 : frmt->flag;
@@ -33,7 +33,7 @@ int		print_nbr(va_list args, t_frmt *frmt)
 	return (len);
 }
 
-int 	putnbr_left(t_frmt *frmt, long long nbr, char empty)
+int		putnbr_left(t_frmt *frmt, long long nbr, char empty)
 {
 	int	wide;
 	int	i;
@@ -43,29 +43,22 @@ int 	putnbr_left(t_frmt *frmt, long long nbr, char empty)
 	wide = output_nlen(frmt, nbr);
 	num_len = n_len(nbr);
 	prec = ((frmt->precision > 0) && (frmt->precision > num_len)) ?
-			frmt->precision : num_len ;
+		frmt->precision : num_len;
 	i = 0;
 	if (nbr < 0)
 	{
-		ft_putchar_fd('-', 1);
-		i++;
+		i += write(1, "-", 1);
 		prec++;
 	}
 	while (i < (prec - num_len))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-	}
+		i += write(1, "0", 1);
 	i += (nbr < 0) ? ft_putnbr(-nbr) : ft_putnbr(nbr);
 	while (i < wide)
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	return (i);
 }
 
-int	putnbr_right(t_frmt *frmt, long long nbr, char empty)
+int		putnbr_right(t_frmt *frmt, long long nbr, char empty)
 {
 	int	wide;
 	int	i;
@@ -75,86 +68,17 @@ int	putnbr_right(t_frmt *frmt, long long nbr, char empty)
 	wide = output_nlen(frmt, nbr);
 	num_len = n_len(nbr);
 	prec = ((frmt->precision > 0) && (frmt->precision > num_len)) ?
-		   frmt->precision : num_len;
+		frmt->precision : num_len;
 	(nbr < 0) ? prec++ : prec;
 	i = 0;
 	while ((i < (wide - prec)) && empty == ' ')
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	if (nbr < 0)
-	{
-		ft_putchar_fd('-', 1);
-		i++;
-	}
+		i += write(1, "-", 1);
 	while ((i < (wide - prec)) && empty == '0')
-	{
-		ft_putchar_fd(empty, 1);
-		i++;
-	}
+		i += write(1, &empty, 1);
 	while (i < (wide - num_len))
-	{
-		ft_putchar_fd('0', 1);
-		i++;
-	}
+		i += write(1, "0", 1);
 	i += (nbr < 0) ? ft_putnbr(-nbr) : ft_putnbr(nbr);
 	return (i);
-}
-
-size_t	n_len(long long nbr)
-{
-	size_t nbr_len;
-
-	nbr_len = 0;
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-//		nbr_len++;
-	}
-	while (nbr > 0 && ++nbr_len)
-		nbr = nbr / 10;
-	return (nbr_len);
-}
-
-size_t	output_nlen(t_frmt *frmt, long long nbr)
-{
-	size_t	len;
-
-	len = n_len(nbr);
-	len = (frmt->wide > (int)len) ? frmt->wide : len;
-	if (frmt->precision > (int)len)
-	{
-		len = frmt->precision;
-		(nbr < 0) ? len++ : len;
-	}
-	return (len);
-}
-
-
-int		ft_putnbr(long long i)
-{
-	if (i == 0)
-	{
-		ft_putchar_fd('0', 1);
-		return (1);
-	} else if (i > 9)
-		return (ft_putnbr(i / 10) + ft_putnbr(i % 10));
-	else
-	{
-		ft_putchar_fd(i + '0', 1);
-		return (1);
-	}
-}
-
-int		put_zero(int wide)
-{
-	int i;
-
-	i = wide;
-	while (i--)
-		ft_putchar_fd(' ', 1);
-	return (wide);
 }

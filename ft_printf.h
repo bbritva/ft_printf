@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:05:12 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:58:42 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int					frmt_print(va_list args, t_frmt *frmt);
 int					print_string(va_list args, t_frmt *frmt);
 size_t				output_len(t_frmt *frmt, char *str);
 size_t				s_len(t_frmt *frmt, char *str);
-size_t				output_nlen(t_frmt *frmt, long long nbr);
-size_t				n_len(long long nbr);
+int 				output_nlen(t_frmt *frmt, long long nbr);
+int 				n_len(long long nbr);
 int 				output_hlen(t_frmt *frmt, long long nbr);
 int 				hex_len(long long nbr);
 void				put_left(size_t len, size_t str_len, char *str,
