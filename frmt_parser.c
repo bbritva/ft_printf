@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:05:49 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/14 12:06:54 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 10:05:55 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,15 @@ int			type_parse(const char *str, int len, s_output *frmt)
 	char	*type;
 
 	frmt->dbl_type = 0;
-
-	type = ft_strchr("cspdiuxX%nfgelh", (int)str[len++]);
-	if (type)
-		frmt->type = *type;
+	if (str[len])
+	{
+		type = ft_strchr("cspdiuxX%nfgelh", (int) str[len]);
+		if (type)
+		{
+			frmt->type = *type;
+			len++;
+		}
+	}
 	return (len);
 }
 

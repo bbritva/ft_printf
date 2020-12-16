@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 09:44:55 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 09:45:57 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int	putnbr_right(s_output *frmt, long long nbr, char empty)
 		i++;
 	}
 	i += (nbr < 0) ? ft_putnbr(-nbr) : ft_putnbr(nbr);
-//	i += num_len;
 	return (i);
 }
 

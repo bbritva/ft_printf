@@ -62,5 +62,9 @@ int			ft_putnbr(long long i);
 int			ft_puthex(long long i, char *);
 int			put_zero(int i);
 int			print_hex(va_list args, s_output *frmt);
+int			print_none(s_output *frmt);
+void		put_none(size_t len, char empty);
+
+
 
 #endif
