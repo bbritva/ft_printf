@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/14 10:40:32 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 13:43:19 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		print_ptr(va_list args, s_output *frmt)
 	return (len);
 }
 
-int 	ptr_size(long long int nbr)
+int 	ptr_size(unsigned long nbr)
 {
 	int ptr_len;
 
@@ -51,7 +51,7 @@ int 	ptr_size(long long int nbr)
 	return (ptr_len);
 }
 
-char	*ft_ptrtostr(long long int nbr, char *base)
+char	*ft_ptrtostr(unsigned long nbr, char *base)
 {
 	char	*str;
 	int		i;

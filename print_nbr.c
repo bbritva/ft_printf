@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 09:45:57 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 10:02:54 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		print_nbr(va_list args, s_output *frmt)
 	char			empty;
 	int 			len;
 
-	nbr = (long long)va_arg(args, int);
+	nbr = va_arg(args, int);
 	(frmt->precision > -1) ? frmt->flag = frmt->flag & 15 : frmt->flag;
 	empty = ((frmt->flag & ZERO) && frmt->precision < 0) ? '0' : ' ';
 	if (frmt->precision == 0 && nbr == 0)

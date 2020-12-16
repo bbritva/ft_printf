@@ -61,4 +61,5 @@ add_executable(ft_printf
         print_ptr.c
         print_hex.c
         print_unbr.c
+        print_none.c
         print_nbr.c)

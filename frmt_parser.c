@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-void gggg(int i);
-
 int			flag_parse(const char *str, int len, s_output *frmt)
 {
 	frmt->flag = 0;

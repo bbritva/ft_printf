@@ -20,7 +20,7 @@ int		print_hex(va_list args, s_output *frmt)
 	char			*base;
 
 	base = (frmt->type == 'x') ? "0123456789abcdef" : "0123456789ABCDEF";
-	nbr = va_arg(args, long long);
+	nbr = va_arg(args, unsigned int);
 	(frmt->precision > -1) ? frmt->flag = frmt->flag & 15 : frmt->flag;
 	empty = ((frmt->flag & ZERO) && frmt->precision == -1) ? '0' : ' ';
 	if (frmt->precision == 0 && nbr == 0)
