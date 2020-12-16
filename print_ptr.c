@@ -6,13 +6,13 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 13:43:19 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_ptr(va_list args, s_output *frmt)
+int		print_ptr(va_list args, t_frmt *frmt)
 {
 	size_t		len;
 	size_t		str_len;

@@ -6,13 +6,13 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 10:02:54 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_nbr(va_list args, s_output *frmt)
+int		print_nbr(va_list args, t_frmt *frmt)
 {
 	int				nbr;
 	char			empty;
@@ -33,7 +33,7 @@ int		print_nbr(va_list args, s_output *frmt)
 	return (len);
 }
 
-int 	putnbr_left(s_output *frmt, long long nbr, char empty)
+int 	putnbr_left(t_frmt *frmt, long long nbr, char empty)
 {
 	int	wide;
 	int	i;
@@ -65,7 +65,7 @@ int 	putnbr_left(s_output *frmt, long long nbr, char empty)
 	return (i);
 }
 
-int	putnbr_right(s_output *frmt, long long nbr, char empty)
+int	putnbr_right(t_frmt *frmt, long long nbr, char empty)
 {
 	int	wide;
 	int	i;
@@ -119,7 +119,7 @@ size_t	n_len(long long nbr)
 	return (nbr_len);
 }
 
-size_t	output_nlen(s_output *frmt, long long nbr)
+size_t	output_nlen(t_frmt *frmt, long long nbr)
 {
 	size_t	len;
 

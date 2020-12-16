@@ -6,13 +6,13 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/07 15:16:35 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_string(va_list args, s_output *frmt)
+int		print_string(va_list args, t_frmt *frmt)
 {
 	size_t	len;
 	size_t	str_len;
@@ -54,7 +54,7 @@ void	put_right(size_t len, size_t str_len, char *str, char empty)
 		ft_putchar_fd(*str++, 1);
 }
 
-size_t	s_len(s_output *frmt, char *str)
+size_t	s_len(t_frmt *frmt, char *str)
 {
 	int str_len;
 
@@ -65,7 +65,7 @@ size_t	s_len(s_output *frmt, char *str)
 	return (str_len);
 }
 
-size_t	output_len(s_output *frmt, char *str)
+size_t	output_len(t_frmt *frmt, char *str)
 {
 	size_t	len;
 

@@ -6,17 +6,16 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/07 15:16:35 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:03:48 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_char(char c, s_output *frmt)
+int		print_char(char c, t_frmt *frmt)
 {
 	size_t	len;
 	char	empty;
-
 
 	len = putchar_len(frmt);
 	empty = (frmt->flag & ZERO) ? '0' : ' ';
@@ -47,7 +46,7 @@ void	putchar_right(size_t len, char c, char empty)
 	ft_putchar_fd(c, 1);
 }
 
-size_t	putchar_len(s_output *frmt)
+size_t	putchar_len(t_frmt *frmt)
 {
 	size_t	len;
 

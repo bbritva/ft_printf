@@ -6,17 +6,17 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/13 18:12:25 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:11:46 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_hex(va_list args, s_output *frmt)
+int		print_hex(va_list args, t_frmt *frmt)
 {
 	long long		nbr;
 	char			empty;
-	int 			len;
+	int				len;
 	char			*base;
 
 	base = (frmt->type == 'x') ? "0123456789abcdef" : "0123456789ABCDEF";
@@ -35,7 +35,7 @@ int		print_hex(va_list args, s_output *frmt)
 	return (len);
 }
 
-int 	puthex_left(s_output *frmt, long long nbr, char empty, char *base)
+int		puthex_left(t_frmt *frmt, long long nbr, char empty, char *base)
 {
 	int	wide;
 	int	i;
@@ -45,7 +45,7 @@ int 	puthex_left(s_output *frmt, long long nbr, char empty, char *base)
 	wide = output_hlen(frmt, nbr);
 	num_len = hex_len(nbr);
 	prec = ((frmt->precision > 0) && (frmt->precision > num_len)) ?
-			frmt->precision : num_len ;
+			frmt->precision : num_len;
 	i = 0;
 	if (nbr < 0)
 	{
@@ -67,7 +67,7 @@ int 	puthex_left(s_output *frmt, long long nbr, char empty, char *base)
 	return (wide);
 }
 
-int	puthex_right(s_output *frmt, long long nbr, char empty, char * base)
+int		puthex_right(t_frmt *frmt, long long nbr, char empty, char *base)
 {
 	int	wide;
 	int	i;
@@ -77,7 +77,7 @@ int	puthex_right(s_output *frmt, long long nbr, char empty, char * base)
 	wide = output_hlen(frmt, nbr);
 	num_len = hex_len(nbr);
 	prec = ((frmt->precision > 0) && (frmt->precision > num_len)) ?
-		   frmt->precision : num_len;
+		frmt->precision : num_len;
 	(nbr < 0) ? prec++ : prec;
 	i = 0;
 	while ((i < (wide - prec)) && empty == ' ')
@@ -118,7 +118,7 @@ size_t	hex_len(long long nbr)
 	return (nbr_len);
 }
 
-size_t	output_hlen(s_output *frmt, long long nbr)
+size_t	output_hlen(t_frmt *frmt, long long nbr)
 {
 	size_t	len;
 
@@ -132,14 +132,14 @@ size_t	output_hlen(s_output *frmt, long long nbr)
 	return (len);
 }
 
-
 int		ft_puthex(long long i, char *base)
 {
 	if (i == 0)
 	{
 		ft_putchar_fd(base[0], 1);
 		return (1);
-	} else if (i > 15)
+	}
+	else if (i > 15)
 		return (ft_puthex(i / 16, base) + ft_puthex(i % 16, base));
 	else
 	{
@@ -147,13 +147,3 @@ int		ft_puthex(long long i, char *base)
 		return (1);
 	}
 }
-//
-//int		put_zero(int wide)
-//{
-//	int i;
-//
-//	i = wide;
-//	while (i--)
-//		ft_putchar_fd(' ', 1);
-//	return (wide);
-//}
