@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:26:12 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:48:14 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:33:58 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,17 @@ int		ft_printf(const char *str, ...)
 	{
 		if (*str != '%')
 			result += write(1, str++, 1);
+		else if ((frmt = frmt_parser(str, args)))
+		{
+			str += frmt->parsed_size;
+			result += frmt_print(args, frmt);
+			free(frmt);
+		}
 		else
-			if ((frmt = frmt_parser(str, args)))
-			{
-				str += frmt->parsed_size;
-				result += frmt_print(args, frmt);
-				free(frmt);
-			}
-			else
-			{
-				result = -1;
-				break;
-			}
+		{
+			result = -1;
+			break ;
+		}
 	}
 	va_end(args);
 	return (result);

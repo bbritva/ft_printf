@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:05:49 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:03:48 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 20:41:51 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ int			type_parse(const char *str, int len, t_frmt *frmt)
 	return (len);
 }
 
-t_frmt	*frmt_parser(const char *str, va_list args)
+t_frmt		*frmt_parser(const char *str, va_list args)
 {
 	t_frmt	*frmt;
-	int			len;
+	int		len;
 
 	len = 1;
 	if ((frmt = (t_frmt *)malloc(sizeof(t_frmt))))

@@ -14,9 +14,9 @@
 
 int		print_unbr(va_list args, t_frmt *frmt)
 {
-	long long		nbr;
-	char			empty;
-	int 			len;
+	long long	nbr;
+	char		empty;
+	int			len;
 
 	nbr = va_arg(args, unsigned int);
 	(frmt->precision > -1) ? frmt->flag = frmt->flag & 15 : frmt->flag;

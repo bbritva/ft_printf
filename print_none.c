@@ -25,7 +25,6 @@ int		print_none(t_frmt *frmt)
 		len = ((size_t)frmt->wide > len) ? frmt->wide : len;
 	empty = (frmt->flag & ZERO) ? '0' : ' ';
 	put_none(len, empty);
-
 	return (len);
 }
 

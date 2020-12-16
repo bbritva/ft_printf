@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:03:48 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		print_ptr(va_list args, t_frmt *frmt)
 	size_t		len;
 	size_t		str_len;
 	uintptr_t	ptr;
-	char 		*str;
+	char		*str;
 	char		empty;
 
 	ptr = va_arg(args, uintptr_t);
@@ -34,11 +34,11 @@ int		print_ptr(va_list args, t_frmt *frmt)
 	else
 		put_right(len, str_len, str, empty);
 	if (ft_strlen(str) > 5)
-		free (str);
+		free(str);
 	return (len);
 }
 
-int 	ptr_size(unsigned long nbr)
+int		ptr_size(unsigned long nbr)
 {
 	int ptr_len;
 
