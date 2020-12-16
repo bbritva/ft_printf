@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 13:47:16 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 19:05:01 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SPACE 2
 # define PLUS 1
 
-typedef struct
+typedef	struct
 {
 	unsigned int	flag;
 	int				wide;
@@ -32,39 +32,41 @@ typedef struct
 	char			type;
 	int				dbl_type;
 	int				parsed_size;
-}					s_output;
+}					t_frmt;
 
-int			ft_printf(const char *str, ...);
-s_output	*frmt_parser(const char *str, va_list args);
-int			frmt_print(va_list args, s_output *frmt);
-int			print_string(va_list args, s_output *frmt);
-size_t		output_len(s_output *frmt, char *str);
-size_t		s_len(s_output *frmt, char *str);
-size_t		output_nlen(s_output *frmt, long long nbr);
-size_t		n_len(long long nbr);
-size_t		output_hlen(s_output *frmt, long long nbr);
-size_t		hex_len(long long nbr);
-void		put_left(size_t len, size_t str_len, char *str, char empty);
-void		put_right(size_t len, size_t str_len, char *str, char empty);
-int 		putnbr_left(s_output *frmt, long long nbr, char empty);
-int 		putnbr_right(s_output *frmt, long long nbr, char empty);
-int 		puthex_left(s_output *frmt, long long nbr, char empty, char *);
-int 		puthex_right(s_output *frmt, long long nbr, char empty, char *);
-void		putchar_left(size_t len, char c, char empty);
-void		putchar_right(size_t len, char c, char empty);
-size_t		putchar_len(s_output *frmt);
-int			print_char(char c, s_output *frmt);
-int			print_ptr(va_list args, s_output *frmt);
-char		*ft_ptrtostr(unsigned long nbr, char *base);
-int			print_nbr(va_list args, s_output *frmt);
-int			print_unbr(va_list args, s_output *frmt);
-int			ft_putnbr(long long i);
-int			ft_puthex(long long i, char *);
-int			put_zero(int i);
-int			print_hex(va_list args, s_output *frmt);
-int			print_none(s_output *frmt);
-void		put_none(size_t len, char empty);
-
-
+int					ft_printf(const char *str, ...);
+t_frmt				*frmt_parser(const char *str, va_list args);
+int					frmt_print(va_list args, t_frmt *frmt);
+int					print_string(va_list args, t_frmt *frmt);
+size_t				output_len(t_frmt *frmt, char *str);
+size_t				s_len(t_frmt *frmt, char *str);
+size_t				output_nlen(t_frmt *frmt, long long nbr);
+size_t				n_len(long long nbr);
+size_t				output_hlen(t_frmt *frmt, long long nbr);
+size_t				hex_len(long long nbr);
+void				put_left(size_t len, size_t str_len, char *str,
+					char empty);
+void				put_right(size_t len, size_t str_len, char *str,
+					char empty);
+int					putnbr_left(t_frmt *frmt, long long nbr, char empty);
+int					putnbr_right(t_frmt *frmt, long long nbr, char empty);
+int					puthex_left(t_frmt *frmt, long long nbr, char empty,
+					char *base);
+int					puthex_right(t_frmt *frmt, long long nbr, char empty,
+					char *base);
+void				putchar_left(size_t len, char c, char empty);
+void				putchar_right(size_t len, char c, char empty);
+size_t				putchar_len(t_frmt *frmt);
+int					print_char(char c, t_frmt *frmt);
+int					print_ptr(va_list args, t_frmt *frmt);
+char				*ft_ptrtostr(unsigned long nbr, char *base);
+int					print_nbr(va_list args, t_frmt *frmt);
+int					print_unbr(va_list args, t_frmt *frmt);
+int					ft_putnbr(long long i);
+int					ft_puthex(long long i, char *base);
+int					put_zero(int i);
+int					print_hex(va_list args, t_frmt *frmt);
+int					print_none(t_frmt *frmt);
+void				put_none(size_t len, char empty);
 
 #endif
