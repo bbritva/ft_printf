@@ -69,7 +69,7 @@ int			type_parse(const char *str, int len, s_output *frmt)
 	frmt->dbl_type = 0;
 	if (str[len])
 	{
-		type = ft_strchr("cspdiuxX%nfgelh", (int) str[len]);
+		type = ft_strchr("cspdiuxX%nfgelh", (int)str[len]);
 		if (type)
 		{
 			frmt->type = *type;
@@ -100,4 +100,3 @@ s_output	*frmt_parser(const char *str, va_list args)
 	}
 	return (frmt);
 }
-
