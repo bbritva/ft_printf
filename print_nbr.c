@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/14 15:51:57 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 09:44:55 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ int 	putnbr_left(s_output *frmt, long long nbr, char empty)
 		ft_putchar_fd(empty, 1);
 		i++;
 	}
-	(nbr < 0 && wide < num_len) ? wide++ : wide;
-	return (wide);
+	return (i);
 }
 
 int	putnbr_right(s_output *frmt, long long nbr, char empty)
@@ -99,9 +98,9 @@ int	putnbr_right(s_output *frmt, long long nbr, char empty)
 		ft_putchar_fd('0', 1);
 		i++;
 	}
-	(nbr < 0) ? ft_putnbr(-nbr) : ft_putnbr(nbr);
-	(nbr < 0 && wide < num_len) ? wide++ : wide;
-	return (wide);
+	i += (nbr < 0) ? ft_putnbr(-nbr) : ft_putnbr(nbr);
+//	i += num_len;
+	return (i);
 }
 
 size_t	n_len(long long nbr)
@@ -112,7 +111,10 @@ size_t	n_len(long long nbr)
 	if (nbr == 0)
 		return (1);
 	if (nbr < 0)
+	{
 		nbr = -nbr;
+//		nbr_len++;
+	}
 	while (nbr > 0 && ++nbr_len)
 		nbr = nbr / 10;
 	return (nbr_len);
