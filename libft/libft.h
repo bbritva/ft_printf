@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:10:13 by grvelva           #+#    #+#             */
-/*   Updated: 2020/09/26 12:16:11 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/16 18:35:26 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+
 
 typedef struct		s_list
 {
