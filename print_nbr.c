@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 20:20:37 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/17 11:10:59 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		putnbr_right(t_frmt *frmt, long long nbr, char empty)
 	prec = ((frmt->precision > 0) && (frmt->precision > num_len)) ?
 		frmt->precision : num_len;
 	(nbr < 0) ? prec++ : prec;
+	(nbr < 0 && prec > wide) ? wide++ : wide;
 	i = 0;
 	while ((i < (wide - prec)) && empty == ' ')
 		i += write(1, &empty, 1);
