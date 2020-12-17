@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/17 11:14:19 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/17 13:41:21 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int					puthex_left(t_frmt *frmt, long long nbr, char empty,
 					char *base);
 int					puthex_right(t_frmt *frmt, long long nbr, char empty,
 					char *base);
-void				putchar_left(size_t len, char c, char empty);
-void				putchar_right(size_t len, char c, char empty);
-size_t				putchar_len(t_frmt *frmt);
+int					putchar_left(int len, char c, char empty);
+int					putchar_right(int len, char c, char empty);
+int					putchar_len(t_frmt *frmt);
 int					print_char(char c, t_frmt *frmt);
 int					print_ptr(va_list args, t_frmt *frmt);
 char				*ft_ptrtostr(unsigned long nbr, char *base);
