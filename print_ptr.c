@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:03:48 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/17 09:46:51 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		print_ptr(va_list args, t_frmt *frmt)
 	else
 		str = (frmt->precision == 0) ? "0x" : "0x0";
 	frmt->precision = -1;
+	if (!str)
+		return (0);
 	str_len = s_len(frmt, str);
 	len = output_len(frmt, str);
 	empty = (frmt->flag & ZERO) ? '0' : ' ';
