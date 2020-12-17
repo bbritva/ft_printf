@@ -31,6 +31,6 @@ $(NAME):	$(OBJS) $(HDR)
 			@echo $(NAME) compilled
 
 .c.o:
-				$(CCF) -c $< -o $(<:.c=.o)
+			$(CCF) -c $< -o $(<:.c=.o)
 
 .PHONY:		all clean fclean re so bonus $(NAME)

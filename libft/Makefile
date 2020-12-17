@@ -25,13 +25,14 @@ SRCS_BNS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 				ft_lstiter.c ft_lstmap.c ft_lstlast.c
 
 OBJS_BNS	=	$(SRCS_BNS:.c=.o)
+HDR			=	libft.h
 
 .c.o:
 		$(CCF) $(FLAGS) -c $< -o $(<:.c=.o)
 		@echo OBJS compilled
 
 
-all:		$(OBJS)
+all:		$(OBJS) $(HDR)
 			$(MKLIB) $(NAME) $(OBJS)
 			@echo libft.a compilled
 
@@ -50,7 +51,7 @@ re:			fclean all
 
 $(NAME):	all
 
-bonus:		$(OBJS) $(OBJS_BNS)
+bonus:		$(OBJS) $(OBJS_BNS) $(HDR)
 			$(MKLIB) $(NAME) $(OBJS) $(OBJS_BNS)
 			@echo libft.a with bonus compilled
 
