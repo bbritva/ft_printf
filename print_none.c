@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 09:43:52 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/16 19:02:02 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/18 14:41:38 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		print_none(t_frmt *frmt)
 {
-	size_t	len;
+	int		len;
 	char	empty;
 
 	if (frmt->precision > -1 && frmt->precision < 1)
@@ -22,17 +22,18 @@ int		print_none(t_frmt *frmt)
 	else
 		len = 1;
 	if (frmt->wide > -1)
-		len = ((size_t)frmt->wide > len) ? frmt->wide : len;
+		len = (frmt->wide > len) ? frmt->wide : len;
 	empty = (frmt->flag & ZERO) ? '0' : ' ';
-	put_none(len, empty);
+	len = put_none(len, empty);
 	return (len);
 }
 
-void	put_none(size_t len, char empty)
+int 	put_none(int len, char empty)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (i++ < len)
-		ft_putchar_fd(empty, 1);
+	while (i < len - 1)
+		i += write(1, &empty, 1);
+	return (i);
 }

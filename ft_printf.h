@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:28:40 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/18 12:22:11 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/18 14:41:24 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int					ft_puthex(long long i, char *base);
 int					put_zero(int i);
 int					print_hex(va_list args, t_frmt *frmt);
 int					print_none(t_frmt *frmt);
-void				put_none(size_t len, char empty);
+int					put_none(int len, char empty);
 
 #endif

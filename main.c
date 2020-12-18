@@ -6,7 +6,7 @@
 /*   By: grvelva <grvelva@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:35:20 by grvelva           #+#    #+#             */
-/*   Updated: 2020/12/17 13:53:09 by grvelva          ###   ########.fr       */
+/*   Updated: 2020/12/18 14:53:41 by grvelva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		main(void)
 
 	str1 = "a123456789a";
 	str2 = "b123456789b";
-	ptf_result = printf("\"%10.10c\"", 'a');
+	ptf_result = printf("\"%\"");
 	printf("\n");
-	ft_ptf_result = ft_printf("\"%10.10c\"", 'a');
+	ft_ptf_result = ft_printf("\"%\"");
 	printf("\n");
 	printf(" my result = %d\n", ft_ptf_result);
 	printf("lib result = %d\n", ptf_result);
