@@ -1,9 +1,9 @@
 NAME		=	libftprintf.a
 LIBFT		=	libft.a
-CCF			=	@gcc $(CFLAGS) -c
+CCF			=	@gcc $(CFLAGS)
 MKLIB		=	@ar rc
 RM			=	@rm -f
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -c
 SRCS		=	ft_printf.c frmt_parser.c frmt_print.c print_string.c print_char.c print_ptr.c \
 				print_nbr.c print_unbr.c print_hex.c print_none.c print_hex_utils.c print_nbr_utils.c
 OBJS		=	$(SRCS:.c=.o)
@@ -24,13 +24,15 @@ fclean:		clean
 
 re:			fclean all
 
-$(NAME):	$(OBJS) $(HDR)
+$(NAME):	$(OBJS)
 			@make bonus -C $(LIB_DIR)
 			@cp $(LIB_DIR)$(LIBFT) $(NAME)
 			$(MKLIB) $(NAME) $(OBJS)
 			@echo $(NAME) compilled
 
-.c.o:
-			$(CCF) -c $< -o $(<:.c=.o)
+%.o:		%.c $(HDR)
+			$(CCF) -I $(HDR) -o $@ -c $<
+			@echo $@ compilled
+
 
 .PHONY:		all clean fclean re so bonus $(NAME)
