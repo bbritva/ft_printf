@@ -28,7 +28,7 @@ int		print_none(t_frmt *frmt)
 	return (len);
 }
 
-int 	put_none(int len, char empty)
+int		put_none(int len, char empty)
 {
 	int i;
 
